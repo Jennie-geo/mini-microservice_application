@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import { ErrorMessage, HttpStatus } from '../utils';
+import { tokenRepo } from '../Repo';
 dotenv.config();
 
 export function authlogin(
@@ -15,5 +16,6 @@ export function authlogin(
       .status(HttpStatus.FORBIDDEN)
       .send(ErrorMessage.AuthError_Message);
   }
+  tokenRepo.getToken(token);
   next();
 }

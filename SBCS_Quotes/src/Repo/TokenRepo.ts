@@ -1,11 +1,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
-export interface Token {
-  token: string;
-}
-
-let tokens: Token[];
+let tokens: string[];
 
 const filePath = resolve(`${__dirname}../../../tokensDb.json`);
 function getTokenDb() {
@@ -25,7 +21,7 @@ function getTokenFromJSONFile() {
 function updateTokenDb() {
   writeFileSync(filePath, JSON.stringify(tokens, null, 2));
 }
-function addToken(token: Token) {
+function addToken(token: string) {
   getTokenDb().push(token);
   updateTokenDb();
   return token;
@@ -33,10 +29,9 @@ function addToken(token: Token) {
 
 function getToken(match: string) {
   const db = getTokenDb();
-  const token = db.find((token) => token.token === match);
-
-  if (!token) {
-    return null;
+  const token = db.filter((token) => token === match.split(' ')[1]);
+  if (token.length < 1) {
+    throw Error("you can't access this endpoint, your token doesn't match.");
   }
   return token;
 }

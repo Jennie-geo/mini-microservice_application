@@ -1,6 +1,6 @@
-import { Token, tokenRepo } from '../Repo';
+import { tokenRepo } from '../Repo';
 
-function createToken(tokenDto: Token) {
+function createToken(tokenDto: string) {
   return tokenRepo.addToken(tokenDto);
 }
 
