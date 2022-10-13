@@ -33,7 +33,9 @@ function addToken(token: Token) {
 
 function getToken(tokenName: keyof Token, match: string) {
   const db = getTokenDb();
-  const token = db.find((token) => token[tokenName] === match);
+  console.log('get db', db);
+  const token = db.find((token) => token[tokenName] == match);
+  console.log('DB.FIND.METHOD', token);
   if (!token) {
     return null;
   }
