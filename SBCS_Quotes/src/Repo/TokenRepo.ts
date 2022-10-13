@@ -31,11 +31,10 @@ function addToken(token: Token) {
   return token;
 }
 
-function getToken(tokenName: keyof Token, match: string) {
+function getToken(match: string) {
   const db = getTokenDb();
-  console.log('get db', db);
-  const token = db.find((token) => token[tokenName] == match);
-  console.log('DB.FIND.METHOD', token);
+  const token = db.find((token) => token.token === match);
+
   if (!token) {
     return null;
   }

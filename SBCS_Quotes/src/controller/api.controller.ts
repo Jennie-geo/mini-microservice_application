@@ -46,6 +46,7 @@ export const checkUserAuth = async (req: Request, res: Response) => {
     return res
       .status(HttpStatus.CREATED)
       .json({ token: TokenService.createToken(token) });
+    // .json({ token: TokenService.createToken(token) });
   } catch (error: any) {
     console.log('Error', error.message);
   }

@@ -6,3 +6,6 @@ export const HttpStatus = {
   BAD_REQUEST: 400,
   SERVER_ERROR: 500,
 };
+export const ErrorMessage = {
+  AuthError_Message: 'You have to login to continue',
+};
