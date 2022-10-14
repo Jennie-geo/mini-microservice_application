@@ -37,7 +37,7 @@ export const apiRequest = async (req: Request, res: Response) => {
 export const checkUserAuth = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-    const userDetail = await axios.post('http://localhost:3111/api/v1/user', {
+    const userDetail = await axios.post(process.env.BASE_URL + '/api/v1/user', {
       email: email,
       password: password,
     });
